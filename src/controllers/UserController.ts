@@ -1,9 +1,17 @@
 import { User, type IUser } from "../models/User";
 import { Controller } from "efri/core/controllers/Controller";
-import type { RouterContext } from "efri/core/types/router";
+import type { LifecycleContext, RouterContext } from "efri/core/types/router";
 
 export class UserController extends Controller {
-  public async index({ res, params, query }: RouterContext): Promise<Response> {
+  protected async onBeforeLoad(context: LifecycleContext): Promise<any> {
+    console.log(context, "onBeforeLoad");
+  }
+
+  public async index({
+    res,
+    params,
+    query,
+  }: LifecycleContext): Promise<Response> {
     try {
       const users = await User.get();
 
@@ -34,8 +42,6 @@ export class UserController extends Controller {
         email: "john@example.com",
         password: "password",
       };
-
-      console.log("jere");
 
       const user = await User.create(data);
       return res.json({ user });

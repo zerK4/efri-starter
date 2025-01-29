@@ -7,8 +7,7 @@
     "start": "bun src/index.ts",
     "build": "bun build src/index.ts --outdir ./dist",
     "test": "bun test",
-    "efri": "bun run ./node_modules/efri/core/cli/index.ts",
-    "migrate": "bun run ./src/packages/efri-orm/src/orm/migrate.ts"
+    "efri": "bun run ./node_modules/efri/core/cli/index.ts"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",

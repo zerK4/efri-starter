@@ -2,6 +2,7 @@ import middlewares from "./src/middlewares";
 import { ConfigLoader } from "efri/core/config";
 import { CommandLoader } from "efri/core/cli/CommandLoader";
 import { middlewareStack } from "efri/core/middlewares/Middleware";
+import PluginLoader from "efri/core/plugins/PluginLoader";
 
 export const efri = {
   registerMiddlewares() {
@@ -22,5 +23,6 @@ export const efri = {
     await this.registerConfigs();
     this.registerMiddlewares();
     await this.registerCommands();
+    await PluginLoader.discoverPlugins();
   },
 };
