@@ -1,7 +1,7 @@
-import type { RoutePlugin } from "efri/core/types/routes";
+import type { IPlugin } from "efri/core/types/plugin";
 import { UserController } from "../../controllers/UserController";
 
-const dynamicRoutesPlugin: RoutePlugin = {
+const dynamicRoutesPlugin: IPlugin = {
   name: "dynamic-routes",
   type: "route-plugin",
   routes: [

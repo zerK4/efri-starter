@@ -1,26 +1,16 @@
 import { User, type IUser } from "../models/User";
 import { Controller } from "efri/core/controllers/Controller";
-import type { LifecycleContext, RouterContext } from "efri/core/types/router";
+import type { RouterContext } from "efri/core/types/router";
 
 export class UserController extends Controller {
-  protected async onBeforeLoad(context: LifecycleContext): Promise<any> {
-    console.log(context, "onBeforeLoad");
-  }
-
   public async index({
     res,
+    req,
     params,
     query,
-  }: LifecycleContext): Promise<Response> {
-    try {
-      const users = await User.get();
-
-      return res.json({ users: users });
-    } catch (error) {
-      console.log(error);
-
-      return res.json({ error: "Internal Server Error" }, 500);
-    }
+  }: RouterContext): Promise<Response> {
+    const users = await User.get();
+    return res.json(users);
   }
 
   public async show({ res, params }: RouterContext): Promise<Response> {
