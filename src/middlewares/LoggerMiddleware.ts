@@ -1,7 +1,7 @@
-import { logger } from "efri/core/logger";
-import type { MiddlewareHandler } from "efri/core/types/middleware";
+import { logger } from "efri/core/logger/CoreLogger";
+import { BaseMiddleware, middlewareStack } from "efri/core/middlewares";
 
-export class LoggerMiddleware implements MiddlewareHandler {
+export default middlewareStack.register("logger", {
   async handle(req: Request, next: () => Promise<Response>): Promise<Response> {
     const start = Date.now();
 
@@ -23,5 +23,5 @@ export class LoggerMiddleware implements MiddlewareHandler {
     );
 
     return response;
-  }
-}
+  },
+});

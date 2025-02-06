@@ -1,5 +1,6 @@
 import { UserController } from "../controllers/UserController";
-import { Router } from "efri/core/router";
+import { logger } from "efri/core/logger/CoreLogger";
+import { Router } from "efri/core/router/Router";
 
 const router = Router.getInstance();
 
@@ -16,4 +17,8 @@ router.group({ prefix: "/api", middleware: ["logger"] }, () => {
     router.get("/{user}", [UserController, "show"]);
     router.post("/create", [UserController, "create"]);
   });
+});
+
+router.get("/", async ({ res, req }) => {
+  return res.send("Hello World!");
 });

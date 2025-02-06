@@ -1,7 +1,8 @@
 import type { IPlugin } from "efri/core/types/plugin";
 import { UserController } from "../../controllers/UserController";
+import { PluginLoader } from "efri/core/plugins/PluginLoader";
 
-const dynamicRoutesPlugin: IPlugin = {
+export default PluginLoader.registerPlugin({
   name: "dynamic-routes",
   type: "route-plugin",
   routes: [
@@ -12,7 +13,5 @@ const dynamicRoutesPlugin: IPlugin = {
       middleware: [],
       file: "./src/plugins/dynamic.ts",
     },
-  ],
-};
-
-export default dynamicRoutesPlugin;
+  ] as const,
+});

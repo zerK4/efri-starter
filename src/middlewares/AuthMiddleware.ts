@@ -1,6 +1,6 @@
-import type { MiddlewareHandler } from "efri/core/types/middleware";
+import { middlewareStack } from "efri/core/middlewares";
 
-export class AuthMiddleware implements MiddlewareHandler {
+export default middlewareStack.register("auth", {
   async handle(req: Request, next: () => Promise<Response>): Promise<Response> {
     const authHeader = req.headers.get("Authorization");
 
@@ -22,5 +22,5 @@ export class AuthMiddleware implements MiddlewareHandler {
     }
 
     return next();
-  }
-}
+  },
+});

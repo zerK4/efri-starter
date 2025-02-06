@@ -1,7 +1,8 @@
-import { ConfigLoader } from "efri/core/config";
+import { config } from "efri/core/config";
 import { z } from "zod";
 
-export default ConfigLoader.validateAppEnv(
+export default config.defineConfig(
+  "app",
   z.object({
     env: z
       .enum(["local", "development", "production", "testing"])

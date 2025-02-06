@@ -3,11 +3,17 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/index.ts",
-    "start": "bun src/index.ts",
-    "build": "bun build src/index.ts --outdir ./dist",
+    "dev": "bun efri start --dev",
+    "start": "bun efri start",
+    "build": "bun run build.config.ts && bun build ./src/index.ts --outdir ./dist",
+    "start:prod": "NODE_ENV=production bun ./dist/src/index.js",
     "test": "bun test",
-    "efri": "bun run ./node_modules/efri/core/cli/index.ts"
+    "efri": "bun run ./node_modules/efri/core/cli/index.ts",
+    "build:vite": "bun run type-check && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc -p tsconfig.build.json",
+    "start:vite": "NODE_ENV=production bun dist/main.js",
+    "generate:routes": "bun run scripts/generate-routes.ts"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
@@ -21,9 +27,11 @@
     "chalk": "^5.4.1",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.4",
-    "efri": "^1.0.1",
+    "efri": "link:efri",
     "knex": "^3.1.0",
     "vite": "^6.0.11",
+    "vite-plugin-checker": "^0.8.0",
+    "vite-tsconfig-paths": "^5.1.4",
     "zod": "^3.24.1"
   }
 }

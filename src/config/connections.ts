@@ -1,6 +1,7 @@
-import db from "./database";
+import { config } from "efri/core/config";
+import { db } from "./database";
 
-export default {
+export default config.defineConfig("connections", {
   default: db?.DATABASE,
   connections: {
     mysql: {
@@ -25,4 +26,4 @@ export default {
       filename: "./src/database/database.sqlite",
     },
   },
-};
+});
