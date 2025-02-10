@@ -1,4 +1,3 @@
-import type { IPlugin } from "efri/core/types/plugin";
 import { UserController } from "../../controllers/UserController";
 import { PluginLoader } from "efri/core/plugins/PluginLoader";
 

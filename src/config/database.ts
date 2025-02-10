@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { config } from "efri/core/config/config/CoreConfig";
-import type { DatabaseConfig } from "efri/core/types";
 
 export const databaseSchema = z
   .object({

@@ -15,9 +15,7 @@ export class UserController extends Controller {
     res: IResponseHelper;
   }>): Promise<Response> {
     const users = await User.get();
-    return res.xml(
-      `<users>${users.map((user) => `<user>${user.name}</user>`)}</users>`
-    );
+    return res.json({ users });
   }
 
   // @Authorized("user.read")
@@ -39,12 +37,6 @@ export class UserController extends Controller {
 
   public async create({ res, req }: RouterContext) {
     try {
-      const safe = await req.validate("newUser");
-
-      if (!safe.success) {
-        return res.json({ errors: safe.errors }, 422);
-      }
-
       const data: IUser = {
         name: "John Doe",
         email: "john@example.com",
