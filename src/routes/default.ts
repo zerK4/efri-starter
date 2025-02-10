@@ -3,7 +3,7 @@ import { Router } from "efri/core/router/Router";
 
 const router = Router.getInstance();
 
-router.group({ prefix: "/api", middleware: ["logger"] }, () => {
+router.group({ prefix: "/api" }, () => {
   router.group({ prefix: "/users" }, () => {
     router.get(
       "/",
@@ -14,7 +14,7 @@ router.group({ prefix: "/api", middleware: ["logger"] }, () => {
     );
 
     router.get("/{user}", [UserController, "show"]);
-    router.post("/create", [UserController, "create"]);
+    router.get("/create", [UserController, "create"]);
   });
 });
 
@@ -25,5 +25,5 @@ router.get(
       "m": "Hello World!",
     });
   },
-  ["cors", "rateLimiter"]
+  ["cors", "rateLimiter", "logger"]
 );
