@@ -7,12 +7,13 @@ export default config.defineConfig(
     env: z
       .enum(["local", "development", "production", "testing"])
       .default("local"),
-    name: z.string().default("starta"),
+    name: z.string().default("efri"),
     port: z
       .string()
-      .regex(/^\d+$/, "APP_PORT must be a valid number")
-      .transform((val) => parseInt(val, 10))
-      .catch(() => 3000) // Fallback if parsing fails
-      .default("3000"),
-  })
+      .regex(/^\d+$/, "PORT must be a valid number")
+      .transform((val) => parseInt(val, 10)),
+  }),
+  {
+    prefix: "APP",
+  }
 );

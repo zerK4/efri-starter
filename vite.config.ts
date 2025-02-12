@@ -68,9 +68,9 @@ export default defineConfig({
     emptyOutDir: true,
     minify: "esbuild",
   },
-  server: {
-    host: true,
-    port: 3000,
-  },
-  envPrefix: ["VITE_", "BUN_"],
+  // server: {
+  //   host: true,
+  //   port: 3000,
+  // },
+  // envPrefix: ["VITE_", "BUN_"],
 });

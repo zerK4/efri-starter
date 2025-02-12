@@ -5,9 +5,9 @@ export default middlewareStack.register("logger", {
   async handle(req: Request, next: () => Promise<Response>): Promise<Response> {
     const start = Date.now();
 
-    logger.info(
-      `[${new Date().toISOString()}] ${req.method} ${new URL(req.url).pathname}`
-    );
+    // logger.info(
+    //   `[${new Date().toISOString()}] ${req.method} ${new URL(req.url).pathname}`
+    // );
 
     console.log(
       `[${new Date().toISOString()}] ${req.method} ${new URL(req.url).pathname}`
