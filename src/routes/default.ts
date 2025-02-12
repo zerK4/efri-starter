@@ -24,6 +24,6 @@ router.get(
     return res.json({
       "m": "Hello World!",
     });
-  },
-  ["cors", "rateLimiter", "logger"]
+  }
+  // ["cors", "rateLimiter", "logger"]
 );
